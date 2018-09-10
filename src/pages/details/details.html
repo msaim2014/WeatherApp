@@ -1,0 +1,39 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Weather Info</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <h3>{{errorMsg}}</h3>
+  <ion-grid *ngIf="weather">
+    <ion-row>
+      <ion-col width-50 offset-25>
+        <h2 class="location">{{item.city}}, {{item.country}}</h2>
+        <div class="icon"><img src="{{icon_url}}" alt=""></div>
+        <h3 class="desc">{{description}}</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-100>
+        <ion-list>
+          <ion-item>
+            <strong>Temperature: </strong>{{fahrenheit}}
+          </ion-item>
+          <ion-item>
+            <strong>Humidity: </strong>{{humidity}}
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="trash">
+    <button ion-button>
+        <ion-icon name="trash" (click)="deleteCity(item)"></ion-icon>
+    </button>
+  </div> 
+</ion-content>

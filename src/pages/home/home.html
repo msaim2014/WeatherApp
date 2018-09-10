@@ -1,17 +1,30 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Weather</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content padding class="home">
+
+  <button ion-button>
+    <ion-icon name="add-circle" (click)="addCity()"></ion-icon>
+  </button>
+
+  
+  <div *ngIf="display">
+      <h2 class="message">{{message}}</h2>
+  </div>
+
+  <ion-card *ngIf="!display">
+    <ion-grid>
+        <ion-row>
+            <ion-col width-50 offset-25>
+              <ion-card-header class="items" *ngFor="let item of data" (click)="itemSelected(item)">
+                <h2 class="location">{{item.city}}, {{item.country}}</h2>
+              </ion-card-header>
+            </ion-col>
+          </ion-row>
+    </ion-grid>
+  </ion-card>
+
 </ion-content>
